@@ -609,7 +609,7 @@ st.markdown(
     """
     <div class="encabezado">
         <h1>Tarea 2</h1>
-        <p><b>IF-0017 Métodos Numéricos y Análisis Computacional</b>
+        <p><b>IF-0017 Métodos Numéricos y Análisis Computacional<br></b>
         Anderson Jesús Monge Alvarado, C4H334<br>
         Jacqueline María Oviedo Miranda, C25748
         </p>

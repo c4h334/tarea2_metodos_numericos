@@ -608,8 +608,11 @@ def comparar_resultados(res_g, res_s):
 st.markdown(
     """
     <div class="encabezado">
-        <h1>Resolución de Programación Lineal</h1>
-        <p>Modelos con 2 variables de decisión y 3 restricciones, resueltos por el método gráfico y por Simplex con penalización (M).</p>
+        <h1>Tarea 2</h1>
+        <h2>IF-0017 Métodos Numéricos y Análisis Computacional</h2>
+        <p>Anderson Jesús Monge Alvarado, C4H334<br>
+        Jacqueline María Oviedo Miranda, C25748
+        </p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -623,8 +626,8 @@ with st.sidebar:
         st.markdown("**Función objetivo**")
         opt = st.radio("Tipo de optimización", ["Maximización", "Minimización"], horizontal=True)
         col_c1, col_c2 = st.columns(2)
-        c1 = col_c1.number_input("Coeficiente x1 (c1)", value=1.0)
-        c2 = col_c2.number_input("Coeficiente x2 (c2)", value=1.0)
+        c1 = col_c1.number_input("Coeficiente x1", value=1.0)
+        c2 = col_c2.number_input("Coeficiente x2", value=1.0)
 
     A = np.zeros((3, 2))
     b = np.zeros(3)
@@ -634,11 +637,11 @@ with st.sidebar:
         with st.container(border=True):
             st.markdown(f"**Restricción {i+1}**")
             c_a1, c_a2 = st.columns(2)
-            A[i][0] = c_a1.number_input(f"x1 (r{i+1})", value=1.0, key=f"a{i}1")
-            A[i][1] = c_a2.number_input(f"x2 (r{i+1})", value=1.0, key=f"a{i}2")
+            A[i][0] = c_a1.number_input(f"x1", value=1.0, key=f"a{i}1")
+            A[i][1] = c_a2.number_input(f"x2)", value=1.0, key=f"a{i}2")
             c_sig, c_b = st.columns(2)
             signos.append(c_sig.selectbox("Signo", ["<=", ">=", "="], key=f"s{i}"))
-            b[i] = c_b.number_input(f"RHS (r{i+1})", value=10.0, key=f"b{i}")
+            b[i] = c_b.number_input(f"Lado derecho", value=10.0, key=f"b{i}")
 
     resolver = st.button("Resolver problema", type="primary")
 

@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # Estilos de la interfaz
-ACENTO = "#0F766E"  # color principal
+ACENTO = "#0F3C76"  # color principal
 OPTIMO = "#B45309"  # solución óptima
 PALETA_RESTRICCIONES = ["#0F766E", "#6D28D9", "#0369A1", "#BE123C"]
 

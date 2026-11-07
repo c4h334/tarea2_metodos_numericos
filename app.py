@@ -321,7 +321,7 @@ def metodo_grafico(opt, c, A, signos, b):
 # Método simplex
 
 def preparar_restricciones(A, signos, b):
-    # Si b < 0 se multiplica la restricción por -1 e invierte el signo (RHS >= 0)
+    # Si b < 0 se multiplica la restricción por -1 e invierte el signo (Lado derecho >= 0)
     A2 = np.array(A, dtype=float).copy()
     b2 = np.array(b, dtype=float).copy()
     s2 = list(signos)
@@ -340,7 +340,7 @@ def columnas_visibles(signos):
     cols = ['Z', 'x1', 'x2']
     cols += [f's{i+1}' for i in range(3) if signos[i] in ("<=", ">=")]
     cols += [f'a{i+1}' for i in range(3) if signos[i] in (">=", "=")]
-    return cols + ['RHS']
+    return cols + ['Lado derecho']
 
 
 def mostrar_sistema(opt, c, A, signos, b):
@@ -367,7 +367,7 @@ def mostrar_sistema(opt, c, A, signos, b):
 
 
 def inicializar_simplex(opt, c, A, signos, b, ajustar=True):
-    columnas = ['Z', 'x1', 'x2', 's1', 's2', 's3', 'a1', 'a2', 'a3', 'RHS']
+    columnas = ['Z', 'x1', 'x2', 's1', 's2', 's3', 'a1', 'a2', 'a3', 'Lado derecho']
     tabla = np.zeros((4, 10))
     vars_basicas = [''] * 3
 
@@ -460,7 +460,7 @@ def metodo_simplex(opt, c, A, signos, b):
     st.subheader("Método Simplex / Penalización (M)")
     A, signos, b, cambios = preparar_restricciones(A, signos, b)
     for i in cambios:
-        st.info(f"La restricción {i} tenía lado derecho negativo: se multiplicó por -1 (y se invirtió el signo) para que RHS ≥ 0.")
+        st.info(f"La restricción {i} tenía lado derecho negativo: se multiplicó por -1 (y se invirtió el signo) para que Lado derecho ≥ 0.")
 
     mostrar_sistema(opt, c, A, signos, b)
     visibles = columnas_visibles(signos)
@@ -510,12 +510,12 @@ def metodo_simplex(opt, c, A, signos, b):
 
         razones = pd.DataFrame({
             "Base": vars_basicas,
-            "RHS": rhs,
+            "Lado derecho": rhs,
             f"Coef. de {columnas[col_entra]}": columna_pivote,
             "Razón": [f"{q:.4f}" if not np.isinf(q) else "—" for q in cocientes],
         })
-        cont.markdown("**Razones (RHS / coeficiente positivo de la columna de entrada):**")
-        cont.dataframe(razones.style.format(precision=4, subset=["RHS", f"Coef. de {columnas[col_entra]}"]), hide_index=True)
+        cont.markdown("**Razones (Lado derecho / coeficiente positivo de la columna de entrada):**")
+        cont.dataframe(razones.style.format(precision=4, subset=["Lado derecho", f"Coef. de {columnas[col_entra]}"]), hide_index=True)
 
         if np.all(np.isinf(cocientes)):
             # Con una artificial positiva en la base, el problema penalizado no acotado no distingue

@@ -609,8 +609,8 @@ st.markdown(
     """
     <div class="encabezado">
         <h1>Tarea 2</h1>
-        <h2>IF-0017 Métodos Numéricos y Análisis Computacional</h2>
-        <p>Anderson Jesús Monge Alvarado, C4H334<br>
+        <p><b>IF-0017 Métodos Numéricos y Análisis Computacional</b>
+        Anderson Jesús Monge Alvarado, C4H334<br>
         Jacqueline María Oviedo Miranda, C25748
         </p>
     </div>
@@ -638,7 +638,7 @@ with st.sidebar:
             st.markdown(f"**Restricción {i+1}**")
             c_a1, c_a2 = st.columns(2)
             A[i][0] = c_a1.number_input(f"x1", value=1.0, key=f"a{i}1")
-            A[i][1] = c_a2.number_input(f"x2)", value=1.0, key=f"a{i}2")
+            A[i][1] = c_a2.number_input(f"x2", value=1.0, key=f"a{i}2")
             c_sig, c_b = st.columns(2)
             signos.append(c_sig.selectbox("Signo", ["<=", ">=", "="], key=f"s{i}"))
             b[i] = c_b.number_input(f"Lado derecho", value=10.0, key=f"b{i}")

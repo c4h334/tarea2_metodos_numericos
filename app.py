@@ -624,7 +624,11 @@ with st.sidebar:
 
     with st.container(border=True):
         st.markdown("**Función objetivo**")
-        opt = st.radio("Tipo de optimización", ["Maximización", "Minimización"], horizontal=True)
+        opt = st.radio( "Tipo de optimización",
+            ["Max", "Min"],
+             format_func=lambda x: "Maximización" if x == "Max" else "Minimización",
+            horizontal=True
+        )
         col_c1, col_c2 = st.columns(2)
         c1 = col_c1.number_input("Coeficiente x1", value=1.0)
         c2 = col_c2.number_input("Coeficiente x2", value=1.0)
